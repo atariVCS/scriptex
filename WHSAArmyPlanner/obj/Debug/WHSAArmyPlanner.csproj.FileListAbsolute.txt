@@ -24,3 +24,29 @@ C:\Users\Matthias\documents\visual studio 2015\Projects\WHSAArmyPlanner\WHSAArmy
 C:\Users\Matthias\documents\visual studio 2015\Projects\WHSAArmyPlanner\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.exe.manifest
 C:\Users\Matthias\documents\visual studio 2015\Projects\WHSAArmyPlanner\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.application
 C:\Users\Matthias\documents\visual studio 2015\Projects\WHSAArmyPlanner\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogShareWithFriends.resources
+D:\Dev\scriptex\WHSAArmyPlanner\bin\Debug\WHSAArmyPlanner.exe.config
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.exe
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.pdb
+D:\Dev\scriptex\WHSAArmyPlanner\bin\Debug\WHSAArmyPlanner.exe.manifest
+D:\Dev\scriptex\WHSAArmyPlanner\bin\Debug\WHSAArmyPlanner.application
+D:\Dev\scriptex\WHSAArmyPlanner\bin\Debug\WHSAArmyPlanner.exe
+D:\Dev\scriptex\WHSAArmyPlanner\bin\Debug\WHSAArmyPlanner.pdb
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.csprojResolveAssemblyReference.cache
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.CustomControls.UcSlot.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Form1.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogAddDetachment.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogBattleroles.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogDetachments.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogFactions.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogHtmlPreview.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogItems.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogMinis.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogNewArmy.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogPreferences.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogShareWithFriends.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogTextPreview.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Forms.DialogUnits.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.Properties.Resources.resources
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.csproj.GenerateResource.Cache
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.exe.manifest
+D:\Dev\scriptex\WHSAArmyPlanner\obj\Debug\WHSAArmyPlanner.application

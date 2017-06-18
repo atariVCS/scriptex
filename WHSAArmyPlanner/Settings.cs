@@ -1,11 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/*"scriptex" Scriptorum Exercitus - Armylist planning tool for tabletop games
+* (c) 2017 by Matthias Breiter. Licensed under the Terms of the Apache 2.0 License
+*/
+
+using System;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace WHSAArmyPlanner
 {
+    /// <summary>
+    /// Singleton Class to store some basic settings. So far the user's template path is stored here
+    /// The settings are stored in the user's Document Folder (of the specific environment)
+    /// </summary>
     public sealed class Settings
     {
         private static readonly Lazy<Settings> lazy = new Lazy<Settings>(() => new Settings());

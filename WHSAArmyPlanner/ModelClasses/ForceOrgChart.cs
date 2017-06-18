@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/*"scriptex" Scriptorum Exercitus - Armylist planning tool for tabletop games
+* (c) 2017 by Matthias Breiter. Licensed under the Terms of the Apache 2.0 License
+*/
+using System;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace WHSAArmyPlanner.ModelClasses
