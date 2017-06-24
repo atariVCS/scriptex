@@ -44,6 +44,7 @@
             this.cbIsUnique = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbReplaceableModel = new System.Windows.Forms.ComboBox();
             this.cmbReplaceableWargear = new System.Windows.Forms.ComboBox();
             this.cbReplaceWargear = new System.Windows.Forms.CheckBox();
             this.lblReplacesWhat = new System.Windows.Forms.Label();
@@ -106,7 +107,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cmbReplaceableModel = new System.Windows.Forms.ComboBox();
+            this.btnSetPoints = new System.Windows.Forms.Button();
             this.panOK.SuspendLayout();
             this.grpboxUnitDetails.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -132,7 +133,7 @@
             this.lbUnits.FormattingEnabled = true;
             this.lbUnits.Location = new System.Drawing.Point(12, 48);
             this.lbUnits.Name = "lbUnits";
-            this.lbUnits.Size = new System.Drawing.Size(232, 511);
+            this.lbUnits.Size = new System.Drawing.Size(232, 524);
             this.lbUnits.TabIndex = 2;
             this.lbUnits.SelectedIndexChanged += new System.EventHandler(this.lbUnits_SelectedIndexChanged);
             // 
@@ -144,16 +145,16 @@
             this.panOK.Controls.Add(this.btnCancel);
             this.panOK.Controls.Add(this.btnApply);
             this.panOK.Controls.Add(this.btnOk);
-            this.panOK.Location = new System.Drawing.Point(12, 634);
+            this.panOK.Location = new System.Drawing.Point(12, 649);
             this.panOK.Name = "panOK";
-            this.panOK.Size = new System.Drawing.Size(759, 40);
+            this.panOK.Size = new System.Drawing.Size(846, 40);
             this.panOK.TabIndex = 8;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(481, 10);
+            this.btnCancel.Location = new System.Drawing.Point(568, 10);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -163,7 +164,7 @@
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Location = new System.Drawing.Point(583, 10);
+            this.btnApply.Location = new System.Drawing.Point(670, 10);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(88, 23);
             this.btnApply.TabIndex = 0;
@@ -174,7 +175,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(677, 10);
+            this.btnOk.Location = new System.Drawing.Point(764, 10);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 1;
@@ -185,7 +186,7 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdd.Location = new System.Drawing.Point(218, 603);
+            this.btnAdd.Location = new System.Drawing.Point(218, 618);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(26, 23);
             this.btnAdd.TabIndex = 5;
@@ -196,18 +197,19 @@
             // btnRemove
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemove.Location = new System.Drawing.Point(185, 603);
+            this.btnRemove.Location = new System.Drawing.Point(185, 618);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(27, 23);
             this.btnRemove.TabIndex = 7;
             this.btnRemove.Text = "-";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // cmbFaction
             // 
             this.cmbFaction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cmbFaction.FormattingEnabled = true;
-            this.cmbFaction.Location = new System.Drawing.Point(63, 578);
+            this.cmbFaction.Location = new System.Drawing.Point(63, 593);
             this.cmbFaction.Name = "cmbFaction";
             this.cmbFaction.Size = new System.Drawing.Size(181, 21);
             this.cmbFaction.TabIndex = 3;
@@ -216,7 +218,7 @@
             // 
             this.lblFaction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblFaction.AutoSize = true;
-            this.lblFaction.Location = new System.Drawing.Point(12, 581);
+            this.lblFaction.Location = new System.Drawing.Point(12, 596);
             this.lblFaction.Name = "lblFaction";
             this.lblFaction.Size = new System.Drawing.Size(45, 13);
             this.lblFaction.TabIndex = 6;
@@ -226,7 +228,7 @@
             // 
             this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(15, 605);
+            this.lblName.Location = new System.Drawing.Point(15, 620);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(35, 13);
             this.lblName.TabIndex = 7;
@@ -235,7 +237,7 @@
             // txtInput
             // 
             this.txtInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtInput.Location = new System.Drawing.Point(63, 605);
+            this.txtInput.Location = new System.Drawing.Point(63, 620);
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(116, 20);
             this.txtInput.TabIndex = 4;
@@ -264,7 +266,7 @@
             this.grpboxUnitDetails.Controls.Add(this.panel1);
             this.grpboxUnitDetails.Location = new System.Drawing.Point(250, 49);
             this.grpboxUnitDetails.Name = "grpboxUnitDetails";
-            this.grpboxUnitDetails.Size = new System.Drawing.Size(516, 576);
+            this.grpboxUnitDetails.Size = new System.Drawing.Size(603, 594);
             this.grpboxUnitDetails.TabIndex = 6;
             this.grpboxUnitDetails.TabStop = false;
             this.grpboxUnitDetails.Text = "Gewählte Einheit bearbeiten";
@@ -290,13 +292,14 @@
             this.groupBox1.Controls.Add(this.btnAddUnitModel);
             this.groupBox1.Location = new System.Drawing.Point(6, 151);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(504, 419);
+            this.groupBox1.Size = new System.Drawing.Size(591, 437);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Modelle, Ausrüstung + Bedingungen für diese Einheit";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnSetPoints);
             this.groupBox2.Controls.Add(this.cmbReplaceableModel);
             this.groupBox2.Controls.Add(this.cmbReplaceableWargear);
             this.groupBox2.Controls.Add(this.cbReplaceWargear);
@@ -332,17 +335,26 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.cmbUnitMiniature);
-            this.groupBox2.Location = new System.Drawing.Point(216, 31);
+            this.groupBox2.Location = new System.Drawing.Point(240, 30);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(282, 382);
+            this.groupBox2.Size = new System.Drawing.Size(345, 400);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Listeneintrag bearbeiten";
             // 
+            // cmbReplaceableModel
+            // 
+            this.cmbReplaceableModel.FormattingEnabled = true;
+            this.cmbReplaceableModel.Location = new System.Drawing.Point(155, 258);
+            this.cmbReplaceableModel.Name = "cmbReplaceableModel";
+            this.cmbReplaceableModel.Size = new System.Drawing.Size(121, 21);
+            this.cmbReplaceableModel.TabIndex = 43;
+            this.cmbReplaceableModel.SelectedIndexChanged += new System.EventHandler(this.cmbReplaceableModel_SelectedIndexChanged);
+            // 
             // cmbReplaceableWargear
             // 
             this.cmbReplaceableWargear.FormattingEnabled = true;
-            this.cmbReplaceableWargear.Location = new System.Drawing.Point(155, 266);
+            this.cmbReplaceableWargear.Location = new System.Drawing.Point(155, 284);
             this.cmbReplaceableWargear.Name = "cmbReplaceableWargear";
             this.cmbReplaceableWargear.Size = new System.Drawing.Size(121, 21);
             this.cmbReplaceableWargear.TabIndex = 42;
@@ -351,7 +363,7 @@
             // cbReplaceWargear
             // 
             this.cbReplaceWargear.AutoSize = true;
-            this.cbReplaceWargear.Location = new System.Drawing.Point(5, 268);
+            this.cbReplaceWargear.Location = new System.Drawing.Point(5, 286);
             this.cbReplaceWargear.Name = "cbReplaceWargear";
             this.cbReplaceWargear.Size = new System.Drawing.Size(148, 17);
             this.cbReplaceWargear.TabIndex = 41;
@@ -362,7 +374,7 @@
             // lblReplacesWhat
             // 
             this.lblReplacesWhat.AutoSize = true;
-            this.lblReplacesWhat.Location = new System.Drawing.Point(61, 243);
+            this.lblReplacesWhat.Location = new System.Drawing.Point(61, 261);
             this.lblReplacesWhat.Name = "lblReplacesWhat";
             this.lblReplacesWhat.Size = new System.Drawing.Size(88, 13);
             this.lblReplacesWhat.TabIndex = 39;
@@ -412,7 +424,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(228, 200);
+            this.label18.Location = new System.Drawing.Point(228, 214);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(44, 13);
             this.label18.TabIndex = 34;
@@ -421,7 +433,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(228, 175);
+            this.label17.Location = new System.Drawing.Point(228, 189);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(44, 13);
             this.label17.TabIndex = 33;
@@ -430,7 +442,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(118, 200);
+            this.label16.Location = new System.Drawing.Point(119, 214);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 13);
             this.label16.TabIndex = 32;
@@ -439,7 +451,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(115, 175);
+            this.label15.Location = new System.Drawing.Point(119, 189);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 13);
             this.label15.TabIndex = 31;
@@ -448,7 +460,7 @@
             // txtEntryExtraMpModels
             // 
             this.txtEntryExtraMpModels.Enabled = false;
-            this.txtEntryExtraMpModels.Location = new System.Drawing.Point(191, 197);
+            this.txtEntryExtraMpModels.Location = new System.Drawing.Point(192, 211);
             this.txtEntryExtraMpModels.Name = "txtEntryExtraMpModels";
             this.txtEntryExtraMpModels.Size = new System.Drawing.Size(30, 20);
             this.txtEntryExtraMpModels.TabIndex = 7;
@@ -457,7 +469,7 @@
             // txtEntryExtraPoints
             // 
             this.txtEntryExtraPoints.Enabled = false;
-            this.txtEntryExtraPoints.Location = new System.Drawing.Point(82, 197);
+            this.txtEntryExtraPoints.Location = new System.Drawing.Point(83, 211);
             this.txtEntryExtraPoints.Name = "txtEntryExtraPoints";
             this.txtEntryExtraPoints.Size = new System.Drawing.Size(30, 20);
             this.txtEntryExtraPoints.TabIndex = 6;
@@ -466,7 +478,7 @@
             // txtEntryExtraPlModels
             // 
             this.txtEntryExtraPlModels.Enabled = false;
-            this.txtEntryExtraPlModels.Location = new System.Drawing.Point(191, 172);
+            this.txtEntryExtraPlModels.Location = new System.Drawing.Point(192, 186);
             this.txtEntryExtraPlModels.Name = "txtEntryExtraPlModels";
             this.txtEntryExtraPlModels.Size = new System.Drawing.Size(30, 20);
             this.txtEntryExtraPlModels.TabIndex = 5;
@@ -475,7 +487,7 @@
             // txtEntryExtraPowerlevel
             // 
             this.txtEntryExtraPowerlevel.Enabled = false;
-            this.txtEntryExtraPowerlevel.Location = new System.Drawing.Point(82, 172);
+            this.txtEntryExtraPowerlevel.Location = new System.Drawing.Point(83, 186);
             this.txtEntryExtraPowerlevel.Name = "txtEntryExtraPowerlevel";
             this.txtEntryExtraPowerlevel.Size = new System.Drawing.Size(30, 20);
             this.txtEntryExtraPowerlevel.TabIndex = 4;
@@ -484,7 +496,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(5, 175);
+            this.label14.Location = new System.Drawing.Point(6, 189);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(71, 13);
             this.label14.TabIndex = 26;
@@ -493,7 +505,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(123, 119);
+            this.label13.Location = new System.Drawing.Point(123, 118);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(29, 13);
             this.label13.TabIndex = 1;
@@ -503,7 +515,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(43, 119);
+            this.label11.Location = new System.Drawing.Point(43, 118);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(26, 13);
             this.label11.TabIndex = 0;
@@ -512,7 +524,7 @@
             // numModelCountLimit
             // 
             this.numModelCountLimit.Enabled = false;
-            this.numModelCountLimit.Location = new System.Drawing.Point(158, 117);
+            this.numModelCountLimit.Location = new System.Drawing.Point(158, 116);
             this.numModelCountLimit.Minimum = new decimal(new int[] {
             1,
             0,
@@ -521,12 +533,11 @@
             this.numModelCountLimit.Name = "numModelCountLimit";
             this.numModelCountLimit.Size = new System.Drawing.Size(42, 20);
             this.numModelCountLimit.TabIndex = 23;
-            this.numModelCountLimit.ValueChanged += new System.EventHandler(this.numModelCountLimit_ValueChanged);
             // 
             // numReplacesEveryNModels
             // 
             this.numReplacesEveryNModels.Enabled = false;
-            this.numReplacesEveryNModels.Location = new System.Drawing.Point(216, 361);
+            this.numReplacesEveryNModels.Location = new System.Drawing.Point(216, 379);
             this.numReplacesEveryNModels.Name = "numReplacesEveryNModels";
             this.numReplacesEveryNModels.Size = new System.Drawing.Size(57, 20);
             this.numReplacesEveryNModels.TabIndex = 14;
@@ -536,7 +547,7 @@
             // 
             this.cbReplacesMForN.AutoSize = true;
             this.cbReplacesMForN.Enabled = false;
-            this.cbReplacesMForN.Location = new System.Drawing.Point(6, 362);
+            this.cbReplacesMForN.Location = new System.Drawing.Point(6, 380);
             this.cbReplacesMForN.Name = "cbReplacesMForN";
             this.cbReplacesMForN.Size = new System.Drawing.Size(205, 17);
             this.cbReplacesMForN.TabIndex = 13;
@@ -547,7 +558,7 @@
             // numMinimumRequired
             // 
             this.numMinimumRequired.Enabled = false;
-            this.numMinimumRequired.Location = new System.Drawing.Point(216, 338);
+            this.numMinimumRequired.Location = new System.Drawing.Point(216, 356);
             this.numMinimumRequired.Name = "numMinimumRequired";
             this.numMinimumRequired.Size = new System.Drawing.Size(57, 20);
             this.numMinimumRequired.TabIndex = 12;
@@ -557,7 +568,7 @@
             // 
             this.cbRequiresMinimum.AutoSize = true;
             this.cbRequiresMinimum.Enabled = false;
-            this.cbRequiresMinimum.Location = new System.Drawing.Point(6, 339);
+            this.cbRequiresMinimum.Location = new System.Drawing.Point(6, 357);
             this.cbRequiresMinimum.Name = "cbRequiresMinimum";
             this.cbRequiresMinimum.Size = new System.Drawing.Size(189, 17);
             this.cbRequiresMinimum.TabIndex = 11;
@@ -568,26 +579,24 @@
             // numModelPoints
             // 
             this.numModelPoints.Enabled = false;
-            this.numModelPoints.Location = new System.Drawing.Point(210, 142);
+            this.numModelPoints.Location = new System.Drawing.Point(210, 141);
             this.numModelPoints.Name = "numModelPoints";
             this.numModelPoints.Size = new System.Drawing.Size(57, 20);
             this.numModelPoints.TabIndex = 3;
-            this.numModelPoints.ValueChanged += new System.EventHandler(this.numModelPoints_ValueChanged);
             // 
             // numModelPowerLevel
             // 
             this.numModelPowerLevel.Enabled = false;
-            this.numModelPowerLevel.Location = new System.Drawing.Point(71, 142);
+            this.numModelPowerLevel.Location = new System.Drawing.Point(71, 141);
             this.numModelPowerLevel.Name = "numModelPowerLevel";
             this.numModelPowerLevel.Size = new System.Drawing.Size(46, 20);
             this.numModelPowerLevel.TabIndex = 2;
-            this.numModelPowerLevel.ValueChanged += new System.EventHandler(this.numModelPowerLevel_ValueChanged);
             // 
             // cbUpgradeOnly
             // 
             this.cbUpgradeOnly.AutoSize = true;
             this.cbUpgradeOnly.Enabled = false;
-            this.cbUpgradeOnly.Location = new System.Drawing.Point(6, 316);
+            this.cbUpgradeOnly.Location = new System.Drawing.Point(6, 334);
             this.cbUpgradeOnly.Name = "cbUpgradeOnly";
             this.cbUpgradeOnly.Size = new System.Drawing.Size(260, 17);
             this.cbUpgradeOnly.TabIndex = 10;
@@ -598,16 +607,15 @@
             // numModelCount
             // 
             this.numModelCount.Enabled = false;
-            this.numModelCount.Location = new System.Drawing.Point(71, 117);
+            this.numModelCount.Location = new System.Drawing.Point(71, 116);
             this.numModelCount.Name = "numModelCount";
             this.numModelCount.Size = new System.Drawing.Size(43, 20);
             this.numModelCount.TabIndex = 15;
-            this.numModelCount.ValueChanged += new System.EventHandler(this.numModelCount_ValueChanged);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 119);
+            this.label12.Location = new System.Drawing.Point(6, 118);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(39, 13);
             this.label12.TabIndex = 14;
@@ -617,7 +625,7 @@
             // 
             this.cbDoesNotCount.AutoSize = true;
             this.cbDoesNotCount.Enabled = false;
-            this.cbDoesNotCount.Location = new System.Drawing.Point(6, 293);
+            this.cbDoesNotCount.Location = new System.Drawing.Point(6, 311);
             this.cbDoesNotCount.Name = "cbDoesNotCount";
             this.cbDoesNotCount.Size = new System.Drawing.Size(186, 17);
             this.cbDoesNotCount.TabIndex = 9;
@@ -629,7 +637,7 @@
             // 
             this.cbReplaceModel.AutoSize = true;
             this.cbReplaceModel.Enabled = false;
-            this.cbReplaceModel.Location = new System.Drawing.Point(6, 223);
+            this.cbReplaceModel.Location = new System.Drawing.Point(6, 241);
             this.cbReplaceModel.Name = "cbReplaceModel";
             this.cbReplaceModel.Size = new System.Drawing.Size(257, 17);
             this.cbReplaceModel.TabIndex = 8;
@@ -640,7 +648,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(123, 144);
+            this.label10.Location = new System.Drawing.Point(123, 143);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 13);
             this.label10.TabIndex = 10;
@@ -649,7 +657,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 144);
+            this.label9.Location = new System.Drawing.Point(6, 143);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 13);
             this.label9.TabIndex = 9;
@@ -691,22 +699,22 @@
             this.lbModels.FormattingEnabled = true;
             this.lbModels.Location = new System.Drawing.Point(6, 47);
             this.lbModels.Name = "lbModels";
-            this.lbModels.Size = new System.Drawing.Size(185, 329);
+            this.lbModels.Size = new System.Drawing.Size(228, 342);
             this.lbModels.TabIndex = 0;
             this.lbModels.SelectedIndexChanged += new System.EventHandler(this.lbModels_SelectedIndexChanged);
             // 
             // txtUnitModelName
             // 
             this.txtUnitModelName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtUnitModelName.Location = new System.Drawing.Point(6, 393);
+            this.txtUnitModelName.Location = new System.Drawing.Point(6, 411);
             this.txtUnitModelName.Name = "txtUnitModelName";
-            this.txtUnitModelName.Size = new System.Drawing.Size(129, 20);
+            this.txtUnitModelName.Size = new System.Drawing.Size(171, 20);
             this.txtUnitModelName.TabIndex = 1;
             // 
             // btnRemoveUnitModel
             // 
             this.btnRemoveUnitModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoveUnitModel.Location = new System.Drawing.Point(139, 392);
+            this.btnRemoveUnitModel.Location = new System.Drawing.Point(183, 410);
             this.btnRemoveUnitModel.Name = "btnRemoveUnitModel";
             this.btnRemoveUnitModel.Size = new System.Drawing.Size(23, 20);
             this.btnRemoveUnitModel.TabIndex = 4;
@@ -717,7 +725,7 @@
             // btnAddUnitModel
             // 
             this.btnAddUnitModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAddUnitModel.Location = new System.Drawing.Point(167, 392);
+            this.btnAddUnitModel.Location = new System.Drawing.Point(211, 410);
             this.btnAddUnitModel.Name = "btnAddUnitModel";
             this.btnAddUnitModel.Size = new System.Drawing.Size(23, 20);
             this.btnAddUnitModel.TabIndex = 2;
@@ -923,20 +931,21 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // cmbReplaceableModel
+            // btnSetPoints
             // 
-            this.cmbReplaceableModel.FormattingEnabled = true;
-            this.cmbReplaceableModel.Location = new System.Drawing.Point(155, 240);
-            this.cmbReplaceableModel.Name = "cmbReplaceableModel";
-            this.cmbReplaceableModel.Size = new System.Drawing.Size(121, 21);
-            this.cmbReplaceableModel.TabIndex = 43;
-            this.cmbReplaceableModel.SelectedIndexChanged += new System.EventHandler(this.cmbReplaceableModel_SelectedIndexChanged);
+            this.btnSetPoints.Location = new System.Drawing.Point(282, 116);
+            this.btnSetPoints.Name = "btnSetPoints";
+            this.btnSetPoints.Size = new System.Drawing.Size(57, 45);
+            this.btnSetPoints.TabIndex = 44;
+            this.btnSetPoints.Text = "Setzen";
+            this.btnSetPoints.UseVisualStyleBackColor = true;
+            this.btnSetPoints.Click += new System.EventHandler(this.btnSetPoints_Click);
             // 
             // DialogUnits
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(783, 686);
+            this.ClientSize = new System.Drawing.Size(870, 701);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.grpboxUnitDetails);
@@ -1060,5 +1069,6 @@
         private System.Windows.Forms.ComboBox cmbReplaceableWargear;
         private System.Windows.Forms.CheckBox cbReplaceWargear;
         private System.Windows.Forms.ComboBox cmbReplaceableModel;
+        private System.Windows.Forms.Button btnSetPoints;
     }
 }

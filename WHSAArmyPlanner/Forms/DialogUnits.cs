@@ -12,7 +12,7 @@ namespace WHSAArmyPlanner.Forms
     public partial class DialogUnits : Form
     {
         Boolean edited = false;
-
+        Boolean selected = false;
         String miniaturesFile = Settings.Instance.MiniatureFile;
         String factionsFile = Settings.Instance.FactionsFile;
         String itemsFile = Settings.Instance.ItemsFile;
@@ -37,6 +37,11 @@ namespace WHSAArmyPlanner.Forms
             InitializeComponent();
         }
         
+        private void DialogUnits_Load(object sender, EventArgs e)
+        {
+            LoadProcedure();
+        }
+
         private void Save()
         {
             edited = false;
@@ -82,11 +87,6 @@ namespace WHSAArmyPlanner.Forms
             }
         }
 
-        private void DialogUnits_Load(object sender, EventArgs e)
-        {
-            LoadProcedure();
-        }
-        
         private void DialogUnits_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (edited)
@@ -283,6 +283,8 @@ namespace WHSAArmyPlanner.Forms
         {
             if (selectedUnit != null)
             {
+                grpboxUnitDetails.Enabled = true;
+
                 cmbUnitFaction.Text = selectedUnit.Faction.Name;
                 cmbUnitFaction.SelectedItem = selectedUnit.Faction;
                 txtUnitName.Text = selectedUnit.Name;
@@ -415,13 +417,27 @@ namespace WHSAArmyPlanner.Forms
             cmbReplaceableModel.Enabled = false;
         }
 
+        public void ClearDetails()
+        {
+            cmbUnitBattlerole.Text = "";
+            cmbUnitFaction.Text = "";
+            cbIsUnique.Checked = false;
+            txtUnitName.Text = "";
+            txtPowerlevel.Text = "";
+            txtMatchpoints.Text = "";
+            numMinModels.Value = 0;
+            numMaxModels.Value = 0;
+            lbModels.Items.Clear();
+            grpboxUnitDetails.Enabled = false;
+        }
+
         public void RefreshListEntry()
         {
             if (selectedUnit != null && selectedUnitModel != null)
             {
                 ActivateListEntryPanel();
                 
-                if (selectedUnitModel.Wargear == null && selectedUnitModel.Miniature == null)
+                if (!selectedUnitModel.IsWargear && selectedUnitModel.Wargear == null && selectedUnitModel.Miniature == null)
                 {
                     #region Empty Entry
                     cmbUnitItem.Enabled = true;
@@ -524,6 +540,7 @@ namespace WHSAArmyPlanner.Forms
                 }
                 else
                 {
+                    numMinimumRequired.Value = 0;
                     numMinimumRequired.Enabled = false;
                 }
 
@@ -534,6 +551,7 @@ namespace WHSAArmyPlanner.Forms
                 }
                 else
                 {
+                    numReplacesEveryNModels.Value = 0;
                     numReplacesEveryNModels.Enabled = false;
                 }
                 #endregion Common Data
@@ -720,74 +738,22 @@ namespace WHSAArmyPlanner.Forms
 
         private void numModelCount_ValueChanged(object sender, EventArgs e)
         {
-            if (selectedUnit != null && selectedUnitModel != null)
-            {
-                edited = true;
-                try
-                {
-                    selectedUnitModel.Count = Convert.ToInt32(numModelCount.Value);
-                }
-                catch
-                {
-                    selectedUnitModel.Count = 0;
-                }
-            }
 
         }
 
         private void numModelCountLimit_ValueChanged(object sender, EventArgs e)
         {
-            if (selectedUnit != null && selectedUnitModel != null)
-            {
-                edited = true;
-                if (numModelCountLimit.Value < 1)
-                {
-                    selectedUnitModel.CountLimit = 99;
-                }
-                else
-                {
-                    try
-                    {
-                        selectedUnitModel.CountLimit = Convert.ToInt32(numModelCountLimit.Value);
-                    }
-                    catch
-                    {
-                        selectedUnitModel.CountLimit = 99;
-                    }
-                }
-            }
+
         }
 
         private void numModelPowerLevel_ValueChanged(object sender, EventArgs e)
         {
-            if (selectedUnit != null && selectedUnitModel != null)
-            {
-                edited = true;
-                try
-                {
-                    selectedUnitModel.PowerLevel = Convert.ToInt32(numModelPowerLevel.Value);
-                }
-                catch
-                {
-                    selectedUnitModel.PowerLevel = 0;
-                }
-            }
+
         }
 
         private void numModelPoints_ValueChanged(object sender, EventArgs e)
         {
-            if (selectedUnit != null && selectedUnitModel != null)
-            {
-                edited = true;
-                try
-                {
-                    selectedUnitModel.Points = Convert.ToInt32(numModelPoints.Value);
-                }
-                catch
-                {
-                    selectedUnitModel.Points = 0;
-                }
-            }
+
         }
 
         private void cbReplaceModel_CheckedChanged(object sender, EventArgs e)
@@ -999,8 +965,9 @@ namespace WHSAArmyPlanner.Forms
         private void lbUnits_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbUnits.SelectedItem != null)
-            {
+            { 
                 selectedUnit = (ModelClasses.Unit)lbUnits.SelectedItem;
+                selected = true;
                 RefreshDetails();
                 ClearEntry();
             }
@@ -1156,8 +1123,67 @@ namespace WHSAArmyPlanner.Forms
                         tmpModel.Points = basecost;
                     }
 
+                    edited = true;
                     selectedUnitModel.ModelToReplace = new ModelClasses.UnitModel(tmpModel);
                     tmpModel = null;
+                }
+            }
+        }
+
+        private void btnSetPoints_Click(object sender, EventArgs e)
+        {
+            if (selectedUnit != null && selectedUnitModel != null)
+            {
+                selectedUnitModel.Count = GetIntVal(numModelCount.Value);
+                selectedUnitModel.CountLimit = GetIntVal(numModelCountLimit.Value);
+                selectedUnitModel.Points = GetIntVal(numModelPoints.Value);
+                selectedUnitModel.PowerLevel = GetIntVal(numModelPowerLevel.Value);
+            }
+        }
+
+        private Int32 GetIntVal(Decimal decVal)
+        {
+            Int32 tmp = 0;
+            try
+            {
+                tmp = Convert.ToInt32(decVal);
+            }
+            catch
+            {
+                tmp = 0;
+            }
+
+            return tmp;
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (selectedUnit != null)
+            {
+                DialogResult usersChoice = MessageBox.Show(this, "Willst Du die Einheit \'" + selectedUnit.Name + "\' wirklich löschen?", "Achtung!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+                if (usersChoice == DialogResult.Yes)
+                {
+                    definedUnits.Remove(selectedUnit);
+                    if (foundUnits != null && foundUnits.Any())
+                    {
+                        try
+                        {
+                            foundUnits.Remove(selectedUnit);
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+
+                    selectedUnit = null;
+
+                    PerformSearch();
+                    RefreshView();
+                    RefreshDetails();
+                    ClearDetails();
+                    ClearEntry();
+                    DisableListEntryPanel();
                 }
             }
         }

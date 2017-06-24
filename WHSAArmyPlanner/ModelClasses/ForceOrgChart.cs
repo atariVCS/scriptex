@@ -92,7 +92,7 @@ namespace WHSAArmyPlanner.ModelClasses
 
             sbSummary.AppendLine();
             sbSummary.AppendLine(new string('-',80));
-            sbSummary.AppendLine("Created with WHSA ArmyPlanner. (c) 2017 by Matthias Breiter. www.ibbreiter.de");
+            sbSummary.AppendLine("Created with Scriptorum Exercitus. (c)2017, www.ibbreiter.de\\scriptorum");
             return sbSummary.ToString();
         }
 
